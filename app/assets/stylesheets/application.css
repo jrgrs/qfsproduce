@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+.menuitem {
+	padding-top: 40px;
+}
+
+.background-img {
+	background-image: url('QFS.png');
+}
+
+.container {
+	background-color: #FFFFFF;
+}
