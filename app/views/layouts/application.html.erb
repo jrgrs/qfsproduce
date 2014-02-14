@@ -1,10 +1,8 @@
 <!DOCTYPE html>
+
 <html>
 
 <div class="background-img">
-
-<%= image_tag('QFS.png') %><br>
-
 
 	<div class="container">
 
@@ -15,15 +13,23 @@
 	  <%= csrf_meta_tags %>
 	</head>
 
+
+	<div class="store-logo">
+		<%= image_tag('QFS.png') %><br>
+	</div>
 	
-	<ul class ="nav nav-pills">
-		<li class="active"><a href="#">Products</a></li>
-		<li><a href="#">Orders</a></li>
-		<li><a href="#">Admin</a></li>
-	</ul>
+	<nav class="navbar navbar-default" role="navigation">
+	<ul class ="nav navbar-nav">
+			<li class="active"><a href="#">Products</a></li>
+			<li><a href="#">Orders</a></li>
+			<li><a href="#">Admin</a></li>
+		</ul>
+	</nav>
+
+	
 
 	<body>
-		<div class="col-md-4 menuitem">
+		<div class="col-md-2 menuitem">
 			<ul class="nav nav-pills nav-stacked">
 	  			<li class="active"><a href="#">All</a></li>
 	  			<li><a href="#">Fruit</a></li>
@@ -32,7 +38,7 @@
 			</ul>
 		</div>
 
-		<div class="col-md-8">
+		<div class="col-md-10">
 			<%= yield %>
 		</div>
 	</body>

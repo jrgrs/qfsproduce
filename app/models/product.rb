@@ -1,4 +1,10 @@
 class Product < ActiveRecord::Base
+
+	has_many :line_items
+
+	before_destroy :ensure_not_referenced_by_any_line_item
+
+
 	validates :title, :description, :unit, :image_url, presence: true
 	validates :price, numericality: {greater_than_or_eaqual_to: 0.01}
 	validates :title, uniqueness: true
@@ -6,4 +12,18 @@ class Product < ActiveRecord::Base
 		with: %r{\.(gif|png|jpg)\Z}i,
 		message: "Must be a URL for a .gif, .png or .jpg image."
 	}
+
+	def self.latest
+		Product.order(:updated_at).last
+	end
+
+	private
+		def ensure_not_referenced_by_any_line_item
+			if line_items.empty?
+				return true
+			else
+				errors.add(:base, 'Line Items Present')
+				return false
+			end
+		end
 end

@@ -8,6 +8,11 @@
 
 Product.delete_all
 #....
-Product.create!(title:"Apple Royal Gala", description:"These apples were grown in WA", unit:"KG", image_url: "apple.jpg", price: 2.99)
-Product.create!(title:"Bananas", description:"Perfectly ripened QLD Bananas", unit:"KG", image_url: "banana.jpg", price: 3.49)
+Product.create!(title:"Apple Royal Gala", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Product 2", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Product 3", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Product 4", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Product 5", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Product 6", description:"These apples were grown in WA", unit:"KG", image_url: "apple.png", price: 2.99)
+Product.create!(title:"Bananas", description:"Perfectly ripened QLD Bananas", unit:"KG", image_url: "banana.png", price: 3.49)
 #....

@@ -16,7 +16,12 @@
 }
 
 .background-img {
-	background-image: url('QFS.png');
+	background-image: url('bg-image.png');
+
+}
+
+.store-logo {
+	padding: 20px 0px;
 }
 
 .container {
