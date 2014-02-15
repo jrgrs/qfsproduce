@@ -13,7 +13,13 @@
 		</div>
 		<div class="panel-body text-center">
 			<%= image_tag(product.image_url,:class => "img-rounded") %><br>
-			<h4><%= product.description %></h4>
+			<h4><%= product.description %></h4><br>
+			<form class="form-inline" role="form">
+				<div class="form-group">
+				<label for="itemQuantity" class="col-sm-1 control-label">Quantity</label><br>
+				<input type="number" class="form-control col-sm-1" name=<%=product.id %> placeholder="1.000">  
+				</div>
+			</form>
 			<div class="price-line text-center">
 				<span class="price"><h3><%= number_to_currency(product.price) %><%= product.unit %></h3></span>	
 			</div>
