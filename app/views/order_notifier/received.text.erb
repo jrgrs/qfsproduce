@@ -1,0 +1,11 @@
+Hi there <%= @order.name %>
+
+Thankyou for your recent order from QFS Online. Your order is being processed and very soon your little box of freshness will be on its way. If you have any queries, feel free to contact us at orders@qfsproduce.com or call us on 00 000 000
+
+Here is a copy of your order:
+<%= render @order.line_items -%>
+
+You will receive another email when your order is on its way to you.
+
+Thanks for shopping with QFS.
+
