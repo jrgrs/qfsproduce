@@ -1,0 +1,45 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+      <h2 class="panel-title"><%= pluralize(@order.errors.count, "error") %> need fixing before your order can be processed</h2>
+      </div>
+
+      <div class="panel-body">
+        <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field col-md-12">
+    <div class="col-md-6">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, size: 40, :class => "form-control col-md-4", :type => "text" %>
+    </div>
+  </div><br>
+  <span></span>
+  <div class="field col-md-12">
+    <div class="col-md-6">
+      <%= f.label :address %><br>
+      <%= f.text_area :address, rows: 3, cols: 40, :class => "form-control" %>
+    </div>
+  </div><br>
+  <div class="field col-md-12">
+    <div class="col-md-6">
+      <%= f.label :email %><br>
+      <%= f.email_field :email, size: 40, :class => "form-control", :type => "email" %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :pay_type %><br>
+    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Place Order', :class => "btn btn-success" %>
+  </div>
+<% end %>

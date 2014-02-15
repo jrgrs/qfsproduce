@@ -13,4 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
+
+
+$(function () {
+  $('.popover-test').popover({ 
+    html : true,
+    title: "Added!",
+    placement: "top",
+    delay: "{ show: 1000, hide: 1000}",
+    content: "<b>This item is now in your trolley</b>"
+  }).popover('toggle');
+
+
+});
+
+

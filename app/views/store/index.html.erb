@@ -1,9 +1,24 @@
-<div class="col-md-12">
+<head>
+	<script type="text/javascript">
+    $('.popovers-to-be-activated').popover();
+</script>
+</head>
+
+<div class="row text-center">
 <%= image_tag("store-header.png", :class => "title-img") %>
 </div>
 
 <% cache ['store', Product.latest] do %>
 
+<div class="col-md-2 ">
+			<ul class="nav nav-pills nav-stacked">
+	  			<li class="active"><a href="#">All</a></li>
+	  			<li><a href="#">Fruit</a></li>
+	  			<li><a href="#">Vegetables</a></li>
+	  			<li><a href="#">Other Items</a></li>
+			</ul>
+		</div>
+<div class="col-md-10">
 <% @products.each do |product| %>
 	<% cache ['entry', product] do %>
 	<div class="col-md-4">
@@ -14,16 +29,31 @@
 		<div class="panel-body text-center">
 			<%= image_tag(product.image_url,:class => "img-rounded") %><br>
 			<h4><%= product.description %></h4><br>
-			<form class="form-inline" role="form">
-				<div class="form-group">
-				<label for="itemQuantity" class="col-sm-1 control-label">Quantity</label><br>
-				<input type="number" class="form-control col-sm-1" name=<%=product.id %> placeholder="1.000">  
-				</div>
-			</form>
+			
 			<div class="price-line text-center">
 				<span class="price"><h3><%= number_to_currency(product.price) %><%= product.unit %></h3></span>	
 			</div>
-			<%= button_to 'Add To Trolley', line_items_path(product_id: product), :class => "btn btn-success" %>
+			<%= button_to 'Add To Trolley', line_items_path(product_id: product), :class => "btn btn-success", remote: true, "data-toggle" => "modal", "data-target" => "#myModal"%>
+
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+     					 <div class="modal-header">
+       						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        					<h4 class="modal-title" id="myModalLabel">Item Added</h4>
+      					</div>
+      					<div class="modal-body">
+        					<p class="text-centre">You've added another item to your trolley</p><br>
+        					<%= image_tag("item-in-trolley.png",:class => "img-rounded") %><br>
+      					</div>
+      					<div class="modal-footer">
+        					<button type="button" class="btn btn-primary" data-dismiss="modal">Keep Shopping</button>
+        					
+      					</div>
+    				</div>
+ 				 </div>
+			</div>
 		</div>
 	</div>
 	</div>
@@ -31,3 +61,4 @@
 	<% end %>
 	<% end %>
 <% end %>
+</div>
