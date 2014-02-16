@@ -1,0 +1,29 @@
+<% if flash[:alert] %>
+	<div class="alert alert-danger">
+		<%= flash[:alert] %>
+	</div>
+<% end %>
+
+<%= form_tag do %>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">Login to QFS Produce</h2>
+		</div>
+
+		<div class="panel-body">
+			<div class="field">
+				<%= label_tag :name, "Username" %><br>
+				<%= text_field_tag :name, params[:name], :class => "form-control", :type => "text" %>
+			</div>
+
+			<div class="field">
+				<%= label_tag :password, "Password" %><br>
+				<%= password_field_tag :password, params[:password], :class => "form-control", :type => "password" %>
+			</div>
+
+			<div>
+				<%= submit_tag "Login", :class => "btn btn-success" %>
+			</div>
+		</div>
+	</div>
+<% end %>
