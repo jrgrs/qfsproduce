@@ -35,10 +35,20 @@
       <%= f.email_field :email, size: 40, :class => "form-control", :type => "email" %>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :pay_type %><br>
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+  <div class="field col-md-12">
+    <div class="col-md-6">
+      <%= f.label :scheduled_date, "Enter Your Desired Delivery Date" %><br>
+      <%= f.text_field :scheduled_date, size: 40, :class => "form-control", :placeholder => "dd/mm/yyyy" %>
+    </div> 
   </div>
+
+  <div class = "field col-md-12">
+    <div class="col-md-6">
+      <%= f.label :scheduled_time, "Enter Your Desired Delivery Time" %><br>
+      <%= f.text_field :scheduled_time, size: 40, :class => "form-control", :placeholder => "HH:MM Please use 24HR Time" %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Place Order', :class => "btn btn-success" %>
   </div>
