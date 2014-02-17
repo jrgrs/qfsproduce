@@ -8,17 +8,7 @@ class ApplicationController < ActionController::Base
   protected 
 
   def authorize
-
-  	if User.count == 0
-  		if request.path_parameters[:controller] == 'users' and request.path_parameters[:action] == 'create'
-  			#do nothing, let the users controller verify
-  		elsif !(request.path_parameters[:controller] == 'users' and request.path_parameters[:action] == 'new')
-  		flash[:notice] = "Please Create Administrative User"
-  		redirect_to :controller => 'users', :action => 'new'
-  		end
-  	elsif !User.find_by_id(session[:user_id])
-  		session[:original_uri] = request.request_uri
-  		redirect_to :controller => 'admin', :action => 'login'
-	end
-  	
- end
+  	unless User.find_by(id: session[:user_id])
+  		redirect_to login_url, notice: "Please log in"
+  	end
+end
