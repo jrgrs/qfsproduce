@@ -1,10 +1,17 @@
 <tr>
 					<td><%= line_item.product.title %></td>
 					<td><%= line_item.quantity %></td>
-					<td><%= number_to_currency(line_item.product.price) %></td>
+					<% if line_item.product.special == true %>
+						<td><%= number_to_currency(line_item.product.sprice) %></td>
+					<% else %>
+						<td><%= number_to_currency(line_item.product.price) %></td>
+					<% end %>	
+					
 					<td><%= number_to_currency(line_item.total_price) %></td>
 					<td>
-						<%= button_to "Remove", line_item, method: :delete, :class => "btn btn-warning", data: {confirm: 'Remove this item from your trolley?'} %>
+						<%= button_to "x", line_item, method: :delete, :class => "btn btn-mini btn-warning", data: {confirm: 'Remove this item from your trolley?'} %>
+
+
 						
 					</td>
 				</tr>

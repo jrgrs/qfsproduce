@@ -7,7 +7,7 @@
 	<div class="container">
 
 	<head>
-	  <title>Qfsproduce</title>
+	  <title>QFS | Your Little Box Of Freshness</title>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  <%= csrf_meta_tags %>
@@ -20,9 +20,9 @@
 	
 	<nav class="navbar navbar-default" role="navigation">
 	<ul class ="nav navbar-nav">
-			<li><a href="#">Home</a></li>
-			<li class="active"><%= link_to "Shop Online", store_url %></li>
-			<li><a href="#">Our Specials</a></li>
+			<li><%= link_to "Home", home_url %></li>
+			<li><%= link_to "Shop Online", store_index_url %></li>
+			<li><%= link_to "Our Specials", specials_index_url %></li>
 			<li><a href="#">Coverage Map</a></li>
 			<li><a href="#">About QFS</a></li>
 		</ul>

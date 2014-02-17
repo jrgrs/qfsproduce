@@ -17,8 +17,6 @@
 
 //= require_tree .
 
-
-
 $(function () {
   $('.popover-test').popover({ 
     html : true,

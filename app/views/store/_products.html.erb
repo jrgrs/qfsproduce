@@ -1,0 +1,64 @@
+<% @products.each do |product| %>
+	<% cache ['entry', product] do %>
+	<div class="col-md-4">
+		<% if product.special == true %>
+			<div class="panel panel-success">
+		<% else %>
+			<div class="panel panel-primary">
+		<% end %>
+		
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= product.title %></h3>
+			</div>
+			<div class="panel-body text-center">
+			
+			<% if product.special == true %>
+				<%= image_tag('special_'+ product.image_url , :alt => "spec") %>
+			<% else %>
+				<%= image_tag(product.image_url,:class => "img-rounded under") %>
+			<% end %>
+			<br>
+			<h4><%= product.description %></h4><br>
+			
+				<div class="price-line text-center">
+					<% if product.special == true %>
+						
+						<span class="price"><h3><%= number_to_currency(product.sprice) %><%= product.unit %></h3></span>
+					<% else %>
+						
+						<span class="price"><h3><%= number_to_currency(product.price) %><%= product.unit %></h3></span>
+					<% end %>
+						
+				</div>
+			<%= button_to 'Add To Trolley', line_items_path(product_id: product), :class => "btn btn-success", remote: true, "data-toggle" => "modal", "data-target" => "#myModal"%>
+
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+     					 <div class="modal-header">
+       						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        					<h4 class="modal-title" id="myModalLabel">Item Added</h4>
+      					</div>
+      					<div class="modal-body">
+        					<p class="text-centre">You've added another item to your trolley</p><br>
+        					<%= image_tag("item-in-trolley.png",:class => "img-rounded") %><br>
+      					</div>
+      					<div class="modal-footer">
+        					<button type="button" class="btn btn-primary" data-dismiss="modal">Keep Shopping</button>
+        					
+      					</div>
+    				</div>
+ 				 </div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<% end %>
+	<% end %>
+
+<div class="text-center">
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+</div>
+

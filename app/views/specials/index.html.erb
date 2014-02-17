@@ -1,0 +1,50 @@
+<div class="row text-center">
+	<%= image_tag("store-header.png", :class => "title-img") %>
+</div>
+
+<div class="col-md-12">
+	<% @products.each do |product| %>
+		<% if product.special? and product.available? %>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title"><%= product.title %></h3>
+				</div>
+
+				<div class="panel-body">
+					<div class="col-md-4 text-center productimg">
+						<%= image_tag(product.image_url) %>
+					</div>
+
+					<div class="col-md-8 text-center">
+						<h2><%= number_to_currency(product.sprice) %><%= product.unit %></h2><br>
+						<h4><strong>Don't Pay <%= number_to_currency(product.price) %><%= product.unit %></strong></h4><br>
+						
+						<h4><%= product.description %></h4><br>
+						<%= button_to 'Add To Trolley', line_items_path(product_id: product), :class => "btn btn-success", remote: true, "data-toggle" => "modal", "data-target" => "#myModal" %>
+					</div>
+				</div>
+
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+     					 <div class="modal-header">
+       						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        					<h4 class="modal-title" id="myModalLabel">Item Added</h4>
+      					</div>
+      					<div class="modal-body">
+        					<p class="text-centre">You've added another item to your trolley</p><br>
+        					<%= image_tag("item-in-trolley.png",:class => "img-rounded") %><br>
+      					</div>
+      					<div class="modal-footer">
+        					<button type="button" class="btn btn-primary" data-dismiss="modal">Keep Shopping</button>
+        					
+      					</div>
+    				</div>
+ 				 </div>
+			</div>
+
+
+			</div>
+		<% end %>
+	<% end %>
+</div>

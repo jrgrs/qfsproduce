@@ -1,4 +1,5 @@
 Qfsproduce::Application.routes.draw do
+  get "specials/index"
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -7,6 +8,10 @@ Qfsproduce::Application.routes.draw do
   end
   get "sessions/create"
   get "sessions/destroy"
+  match '/home' => 'pages#home', :via => [:get]
+  match '/about' => 'pages#about', :via => [:get]
+  match '/coverage' => 'pages#coverage', :via => [:get]
+  
   resources :users
 
   resources :orders
@@ -24,7 +29,7 @@ Qfsproduce::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'store#index', as: 'store'
+  root 'pages#home', as: 'pages'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

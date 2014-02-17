@@ -18,6 +18,9 @@ class Product < ActiveRecord::Base
 		Product.order(:updated_at).last
 	end
 
+
+
+
 	private
 		def ensure_not_referenced_by_any_line_item
 			if line_items.empty?

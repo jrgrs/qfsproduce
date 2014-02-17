@@ -4,6 +4,10 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
 
   def total_price
-  	product.price * quantity
+  	if product.special == true
+  		product.sprice * quantity
+  	else
+  		product.price * quantity
+  	end
   end
 end

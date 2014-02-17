@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :update, :destroy, :show]
 
   include CurrentCart
 
@@ -37,7 +37,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_url, notice: 'Line item was successfully created.' }
+        format.html { redirect_to store_index_url, notice: 'Line item was successfully created.' }
         format.js
         format.json { render action: 'show', status: :created, location: @line_item }
       else
@@ -71,7 +71,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to(@line_item.cart, :notice => "Item removed from your trolley") }
+      format.html { redirect_to(store_index_url, :notice => "Item removed from your trolley") }
       format.json { head :no_content }
     end
   end
