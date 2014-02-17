@@ -16,3 +16,14 @@ Qfsproduce::Application.configure do
 		enable_starttls_auto: true
 	}
 end
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+	:user_name => "orders@qfsproduce.com",
+	:password => "zsaxzsax",
+	:port => "587",
+	:address => "smtp.gmail.com",
+	:authentication => :plain,
+	:enable_starttls_auto => true
+
+}
