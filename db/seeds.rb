@@ -17,5 +17,3 @@ Product.create!(title:"Product 6", description:"These apples were grown in WA", 
 Product.create!(title:"Bananas", description:"Perfectly ripened QLD Bananas", unit:"KG", image_url: "banana.png", price: 3.49)
 #....
 
-User.delete_all
-User.create!(name:"Jamie", password:"zsaxzsax", :password_confirmation"zsazsax")
